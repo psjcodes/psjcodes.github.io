@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-&emsp;To learn more about the blog, click [here](/2024/03/28/welcome-to-my-blog).
+&emsp;To learn more about the blog, click [here](/2024/03/27/welcome-to-my-blog).
 
 ## Education
 - **University of California San Diego**
