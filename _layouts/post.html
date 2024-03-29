@@ -17,18 +17,16 @@ layout: default
   <div class="post-info">
     <div class="post-date">
       {{ site.data.lang[site.language].post_write_date}}
-      {{ page.date | date: '%Y-%m-%d' }}
+      {{ page.date | date: '%Y-%m-%d' }},
       {% if page.last_modified_at %}
-        ,
         {{ site.data.lang[site.language].post_update_date}}
-        {{ page.last_modified_at | date: '%Y-%m-%d' }}
+        {{ page.last_modified_at | date: '%Y-%m-%d' }}.
       {% endif %}
-      .
     </div>
-    {% if site.name %}
+    <!--{% if site.name %}
     <div class="post-author">
       {{ site.data.lang[site.language].post_author }}{{ site.name }}
-    </div>
+    </div>-->
     {% endif %}
     <div class="post-categories">
       <span>{{ site.data.lang[site.language].post_categories }}</span>
@@ -40,7 +38,7 @@ layout: default
       </a>
       {% endfor %}
     </div>
-    <div class="post-tags">
+    <!--<div class="post-tags">
       <span>{{ site.data.lang[site.language].post_tags }}</span>
       {% for tag in page.tags %}
       <span class="post-tag">{{ tag }}</span>
@@ -71,5 +69,5 @@ layout: default
     {% if site.comments %}
       {% include comments.html %}
     {% endif %}
-  </div>
+  </div>-->
 </article>

@@ -4,13 +4,15 @@ title: About
 permalink: /about/
 ---
 
-Jekyll Paper is a simple Jekyll theme, and it is aim to helping you to create your own blog by the easiest way.
+&emsp;To learn more about the blog, click [here](/2024/03/28/welcome-to-my-blog).
 
-You can find more information in [Jekyll Paper][jekyll-paper] or [Jekyll Paper for Github][jekyll-paper-github]. If you have any questions or suggestions, you can contact me in [Jekyll Paper Issues][jekyll-paper-issues], [Jekyll Paper for Github Issues][jekyll-paper-github-issues] or send email to [me](mailto:i@ghosind.com). 
+## Education
+- **University of California San Diego**
+    - *B.S. Computer Engineering* \| Sep 2021 - Jun 2025
 
-Wish you enjoying your blog life!
+## Experience
+- **MerQube, Inc.**
+    <!-- - *idk yet* \| London, UK \| idk yet - idk yet -->
+    - *Engineering Intern* \| San Mateo, CA \| Jul 2023 - Sep 2023
 
-[jekyll-paper]: https://github.com/ghosind/Jekyll-Paper
-[jekyll-paper-github]: https://github.com/ghosind/Jekyll-Paper-Github
-[jekyll-paper-issues]: https://github.com/ghosind/Jekyll-Paper/issues
-[jekyll-paper-github-issues]: https://github.com/ghosind/Jekyll-Paper-Github/issues
+<!--## Honors and Awards -->
