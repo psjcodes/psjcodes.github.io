@@ -1,25 +1,18 @@
-<!DOCTYPE html>
-<html lang="{{ site.language }}">
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css">
-  <style>
-    body {
-      font-family: "Computer Modern Serif", serif;
-    }
-  </style>
-  <head>
-    {% include head.html %}
-  </head>
-  <body>
-    <div class="container-wrapper">
-      <header class="container-header">
+---
+layout: compress
+---
+
+{% include head.html %}
+
+    <main>
+
         {% include header.html %}
-      </header>
-      <main class="container-main">
+
         {{ content }}
-      </main>
-      <footer class="container-footer">
-        {% include footer.html %}
-      </footer>
-    </div>
-  </body>
+
+    </main>
+
+    {% include footer.html %}
+
+</body>
 </html>
