@@ -31,7 +31,7 @@ github_username:  psjcodes
 
 # Build settings
 theme: minima
-theme: jekyll-bear-theme
+#theme: jekyll-bear-theme
 plugins:
   - jekyll-feed
 
