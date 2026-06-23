@@ -44,9 +44,9 @@ Also, if "we can't identify the natural basis" were really treated as obvious, t
 The contribution isn't the impossibility, it's that taking it seriously reorganizes the problem into more tractable questions, and a lot of good work is still solving the intractable version of it. Some of these moves aren't new on their own (certifying instead of discovering, the gauge quotient, both live in adjacent literatures); the claim is narrower, that the same structure recurs across all four subthreads, and that the operative failure is usually brittleness, not impossibility.
 
 ## Subthread - Grokking modular addition
-If we want to study recovery, then we want a setting where we know the structure exists. [Nanda et al.'s](https://arxiv.org/abs/2301.05217) grokking transformer gives us this for free.
+If we want to study recovery, then we want a setting where we know the structure exists. Nanda et al.'s[2] grokking transformer gives us this for free.
 
-On modular addition, the network learns to place inputs on a circle and compute in the Fourier basis (Nanda et al., 2023). We can watch that happen with a simple concentration measure on the embedding's Fourier power spectrum, the *participation ratio*: roughly the effective number of frequencies the energy spreads across, high when it's smeared over many modes and low when it piles onto a few. Across the grokking transition that ratio collapses by roughly 6.6x, and does so as a leading ramp, before the sudden behavioral jump, so the clean algebraic object (the circle) becomes visible in the weights *when we read it in the privileged basis*. (A proper write-up of the participation-ratio measurement is its own note; here it's just a way to turn "the spectrum concentrated" into a number.) This matters because, when recovery fails on harder tasks, we can't just say "the structure isn't there"; in this case it's cleanly measurable.
+On modular addition, the network learns to place inputs on a circle and compute in the Fourier basis (Nanda et al., 2023). We can watch that happen with a simple concentration measure on the embedding's Fourier power spectrum, the *participation ratio*: roughly the effective number of frequencies the energy spreads across, high when it's smeared over many modes and low when it piles onto a few. Across the grokking transition that ratio collapses by roughly 6.6x, and does so as a leading ramp, before the sudden behavioral jump, so the clean algebraic object (the circle) becomes visible in the weights *when we read it in the privileged basis* (can read further on this [[Notes/grok-fourier-pr.md|here]]). This matters because, when recovery fails on harder tasks, we can't just say "the structure isn't there"; in this case it's cleanly measurable.
 
 So this isn't just a story about late generalization, but also that grokking is a control condition for interpretability. In this case where the latent structure is known, the transition is visible, and the recovery question can be answered properly. Roughly, we can write this:
 
@@ -55,7 +55,13 @@ So this isn't just a story about late generalization, but also that grokking is 
 Early on, the residual/memorization component carries the train behavior, and later, the rule component becomes stable and test accuracy snaps. In the Boolean case, we can examine this residual component directly: `r = f XOR h`, where f is the learned function and h is the target. The behavioral transition is a thresholded view of the underlying representational change. Here, grokking is about the dynamics of how a system moves from a long, high-complexity code to a short, structured one, with respect to the privileged basis.
 
 ## Subthread - Hopes on SAEs might be too high
-*Coming soon*
+*Stubs:*
+
+- **SAEs work, and the authors' own caveats are the thesis:** Scaling monosemanticity[3] pulls millions of interpretable, even safety-relevant, features off a frontier model; the same work flags non-uniqueness across training runs, unknown completeness, and that the result is "partly illusory." Those caveats are the identifiability wall, stated from the inside.
+- **The failure modes sort into the two walls:** The SAE-eval literature[4] reads as a grab-bag (absorption, feature splitting, non-uniqueness, dead features, interpretability illusions), but it isn't: non-uniqueness / absorption / splitting are *identifiability* (which decomposition); shrinkage, and the SAEBench finding that better reconstruction doesn't improve disentanglement, are *perturbation geometry*; recall-without-precision illusions are a *certificate* failure (no verification against a candidate). Gated / TopK / JumpReLU fix the measurement and still don't cross identifiability, which is the whole point.
+- **Non-uniqueness isn't a surprise, it's overcomplete ICA:** "Independently trained SAEs learn different dictionaries" is the non-identifiability of an overcomplete code without side information[5], the gauge from the two-wall framing above, not a new empirical wrinkle.
+- **Principled vs incidental privileged basis:** Grokking gets its basis from a symmetry (Fourier); the residual stream gets one from Adam's per-dimension normalizers[6], an *incidental* basis rather than a principled one. An incidental basis beats random but doesn't buy identifiability, which is exactly why residual- or SAE-basis features are "one valid decomposition," not canonical; the gauge is free in theory but partially pinned by training dynamics.
+- **Useful is not canonical:** You can steer effectively in SAE latent space[7] without the features being the model's true units; that's the pragmatic frontier[8], and it's fine, as long as we don't sell the handle as the structure.
 
 ## Subthread - Reference-free recovery up to gauge
 *Coming soon*
@@ -70,6 +76,12 @@ None of this gets us canonical, basis-free, unsupervised interpretability. The r
 ## References
 1. Pranay Jha. *Noise-Tolerant Verification of Compositional Boolean Recovery.* 2nd Workshop on Compositional Learning, ICML 2026. [OpenReview](https://openreview.net/forum?id=rOuUpMXyvH)
 2. Neel Nanda, Lawrence Chan, Tom Lieberum, Jess Smith, Jacob Steinhardt. *Progress Measures for Grokking via Mechanistic Interpretability.* ICLR 2023. [arXiv:2301.05217](https://arxiv.org/abs/2301.05217)
+3. Templeton et al. *Scaling Monosemanticity: Extracting Interpretable Features from Claude 3 Sonnet.* Transformer Circuits, 2024. [summary](https://learnmechinterp.com/topics/scaling-monosemanticity/)
+4. *Sparse Autoencoder Variants and Evaluation* (incl. SAEBench). learnmechinterp.com. [link](https://learnmechinterp.com/topics/sae-variants-and-evaluation/)
+5. Aapo Hyvärinen, Petteri Pajunen. *Nonlinear Independent Component Analysis: Existence and Uniqueness Results.* Neural Networks, 1999.
+6. Nelson Elhage et al. *Privileged Bases in the Transformer Residual Stream.* Transformer Circuits, 2023. [link](https://transformer-circuits.pub/2023/privileged-basis/index.html)
+7. Samuel Soo, Chen Guang, Chandrasekaran Balaganesh, Wesley Teng, Tan Guoxian, Yan Ming. *Interpretable Steering of Large Language Models with Feature Guided Activation Additions.* arXiv:2501.09929, 2025. [arXiv:2501.09929](https://arxiv.org/abs/2501.09929)
+8. Neel Nanda, Josh Engels, Arthur Conmy, et al. *A Pragmatic Vision for Interpretability.* AlignmentForum, 2025. [link](https://www.alignmentforum.org/posts/StENzDcD3kpfGJssR/a-pragmatic-vision-for-interpretability)
 
 *(More to come as the SAE and reference-free subthreads are written.)*
 
