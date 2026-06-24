@@ -4,7 +4,7 @@ created: 2026-06-23
 modified: 2026-06-23
 ---
 
-This note is a subthread of [[thread-basis-bottleneck|the basis-is-the-bottleneck thread]]. While the network is learning to grok modular addition, the embedding's Fourier **participation ratio** collapses by about 6.6x, and it does so *before* the test-loss jump.
+This note is a subthread of [[thread-basis-bottleneck|the basis-is-the-bottleneck]] thread. While the network is learning to grok modular addition, the embedding's Fourier **participation ratio** collapses by about 6.6x, and it does so *before* the test-loss jump.
 
 ## Setup
 
@@ -34,6 +34,12 @@ I picked PR for three reasons, and the third is the one I find most important:
 
 So this is not a coincident snap. It's a ramp that is well underway while the test loss is still pinned high, and the loss only falls once the ramp has mostly completed.
 
+## Relation to Nanda's progress measures
+
+Nanda's restricted and excluded loss[1] already show the circuit forming before the grok, so the lead itself isn't new. The difference is what *kind* of measure this is: their progress measures are mechanism-keyed (you first identify the key frequencies) and loss-based (a forward pass on data), whereas PR is weight-only, parameter-free, and gauge-invariant, and needs the privileged basis but not the circuit. The cost is that PR is strictly less informative: it sees that the spectrum concentrated, not which frequencies the network uses or whether it uses them correctly, and it can't separate memorization from cleanup the way restricted vs excluded loss can.
+
+A third family is basis-free: measures of the *complexity* of the learned function rather than its concentration in any basis, for instance the density of a network's linear/spline-partition regions, which collapses at grok and shows the phenomenon reaches well beyond modular addition, onto CNNs and ResNets (Humayun et al.[2]). These need no privileged basis precisely because they track how *complex* the map is, not *what* it recovered: high during memorization (dense regions there, loosely the input-space cousin of the broadband Fourier spectrum we track here) and low after grok. PR is the basis-dependent counterpart: it reports not just that complexity collapsed but onto *which* frequencies, at the price of needing the basis.
+
 ## Conclusions
 
 The behavioral transition is a *thresholded readout* of a representational change that is already forming. The structure forms gradually in the privileged basis; the loss curve is a delayed, nonlinear indicator that only reports the change once the embedding is concentrated enough for the downstream computation to succeed. When you can name the right basis, "did the structure form?" becomes a smooth, leading, measurable quantity, and the dramatic behavioral jump is the *least* informative view of it.
@@ -48,6 +54,7 @@ It also makes grokking a clean control condition for recovery questions. Here th
 
 ## References
 1. Neel Nanda, Lawrence Chan, Tom Lieberum, Jess Smith, Jacob Steinhardt. *Progress Measures for Grokking via Mechanistic Interpretability.* ICLR 2023. [arXiv:2301.05217](https://arxiv.org/abs/2301.05217)
+2. Ahmed Imtiaz Humayun, Randall Balestriero, Richard Baraniuk. *Deep Networks Always Grok and Here is Why.* arXiv:2402.15555, 2024. [arXiv:2402.15555](https://arxiv.org/abs/2402.15555)
 
 ### AI Disclaimer
 *A large language model (LLM) was used in the drafting and editing of this content. The author reviewed and refined the text to ensure accuracy and maintain personal voice.*

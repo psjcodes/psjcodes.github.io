@@ -62,6 +62,9 @@ Early on, the residual/memorization component carries the train behavior, and la
 - **Non-uniqueness isn't a surprise, it's overcomplete ICA:** "Independently trained SAEs learn different dictionaries" is the non-identifiability of an overcomplete code without side information[5], the gauge from the two-wall framing above, not a new empirical wrinkle.
 - **Principled vs incidental privileged basis:** Grokking gets its basis from a symmetry (Fourier); the residual stream gets one from Adam's per-dimension normalizers[6], an *incidental* basis rather than a principled one. An incidental basis beats random but doesn't buy identifiability, which is exactly why residual- or SAE-basis features are "one valid decomposition," not canonical; the gauge is free in theory but partially pinned by training dynamics.
 - **Useful is not canonical:** You can steer effectively in SAE latent space[7] without the features being the model's true units; that's the pragmatic frontier[8], and it's fine, as long as we don't sell the handle as the structure.
+- **Dilution is an identifiability failure, sharpened:** Bhalla et al.[9] show an SAE can capture a concept *manifold* two clean ways, globally (a compact atom group whose span holds the manifold) or locally (atoms each tiling a region), but in practice does neither, fragmenting into a regime they call *dilution*. That is sharper than "non-uniqueness": it names *how* the decomposition fails to commit, and it sits squarely on the identifiability wall.
+- **Their fix is "recover up to gauge," from inside the SAE literature:** their remedy is post-hoc discovery of *coherent atom groups*, not isolated directions. That is exactly the gauge move: recover the spanning subspace / manifold (the invariant) and treat the individual atoms (a basis within it) as gauge. The canonical-atom target is the brittle readout; the subspace is the identifiable object.
+- **The clean-toy regime is the global-capture case (a wedge):** on the known modular-addition circle an SAE near-globally captures the manifold with no dilution, which locates dilution as a property of the messy, anisotropic LLM regime rather than of SAEs intrinsically; they characterize the failure, the toy shows where it vanishes.
 
 ## Subthread - Reference-free recovery up to gauge
 *Coming soon*
@@ -82,6 +85,7 @@ None of this gets us canonical, basis-free, unsupervised interpretability. The r
 6. Nelson Elhage et al. *Privileged Bases in the Transformer Residual Stream.* Transformer Circuits, 2023. [link](https://transformer-circuits.pub/2023/privileged-basis/index.html)
 7. Samuel Soo, Chen Guang, Chandrasekaran Balaganesh, Wesley Teng, Tan Guoxian, Yan Ming. *Interpretable Steering of Large Language Models with Feature Guided Activation Additions.* arXiv:2501.09929, 2025. [arXiv:2501.09929](https://arxiv.org/abs/2501.09929)
 8. Neel Nanda, Josh Engels, Arthur Conmy, et al. *A Pragmatic Vision for Interpretability.* AlignmentForum, 2025. [link](https://www.alignmentforum.org/posts/StENzDcD3kpfGJssR/a-pragmatic-vision-for-interpretability)
+9. Usha Bhalla, Thomas Fel, et al. (incl. Atticus Geiger, Ekdeep Singh Lubana). *Do Sparse Autoencoders Capture Concept Manifolds?* arXiv:2604.28119, 2026. [arXiv:2604.28119](https://arxiv.org/abs/2604.28119)
 
 *(More to come as the SAE and reference-free subthreads are written.)*
 
