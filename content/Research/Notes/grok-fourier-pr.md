@@ -29,8 +29,8 @@ I picked PR for three reasons, and the third is the one I find most important:
 ![Embedding Fourier PR vs train and test loss (log scale)](grok-fourier-pr.png)
 
 - PR collapses from a pre-grok mean of **37.2** to a post-grok mean of **5.6**, a **6.6x** drop. 5.6 is in the right ballpark for the handful of key frequencies the grokked circuit is known to use.
-- The steepest test-loss drop, i.e. the "grok", is at **~epoch 10,671**.
-- PR reaches the midpoint of its fall (~21) at **~epoch 8,988**, so the spectral concentration **leads the behavioral jump by ~1,700 epochs**. At that point the test loss is still **6.8**; it had risen to ~26 during memorization, so behaviorally the network still looks like it is overfitting.
+- The steepest test-loss drop, i.e. the "grok", is at **$\approx$epoch 10,671**.
+- PR reaches the midpoint of its fall ($\approx$21) at **$\approx$epoch 8,988**, so the spectral concentration **leads the behavioral jump by $\approx$1,700 epochs**. At that point the test loss is still **6.8**; it had risen to $\approx$26 during memorization, so behaviorally the network still looks like it is overfitting.
 
 So this is not a coincident snap. It's a ramp that is well underway while the test loss is still pinned high, and the loss only falls once the ramp has mostly completed.
 
