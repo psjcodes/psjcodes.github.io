@@ -1,3 +1,38 @@
 @use "./variables.scss" as *;
 
-// put your custom CSS here!
+// ── Computer Modern Sans Serif ──────────────────────────────────────────────
+// CMU Sans Serif (Computer Modern Unicode), served from jsDelivr (aaaakshat/cm-web-fonts).
+// body + headers use it; code keeps the configured monospace font.
+@font-face {
+  font-family: "Computer Modern Sans";
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/font/Sans/cmunss.woff") format("woff");
+}
+@font-face {
+  font-family: "Computer Modern Sans";
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/font/Sans/cmunsx.woff") format("woff");
+}
+@font-face {
+  font-family: "Computer Modern Sans";
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/font/Sans/cmunsi.woff") format("woff");
+}
+@font-face {
+  font-family: "Computer Modern Sans";
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/font/Sans/cmunso.woff") format("woff");
+}
+
+:root {
+  --bodyFont: "Computer Modern Sans", ui-sans-serif, system-ui, sans-serif !important;
+  --headerFont: "Computer Modern Sans", ui-sans-serif, system-ui, sans-serif !important;
+}
