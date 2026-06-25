@@ -12,7 +12,7 @@ I train Nanda's 1-layer transformer from scratch: $a + b \bmod 113$, 30% of the 
 
 ## The regularizer and the two controls
 
-The grokked solution is sparse in the Fourier basis (a few key modes = the circle[2]); memorization is broadband. So the natural intervention is **Fourier-L1**: an L1 penalty on the DFT (over the symbol axis) of the embedding $W_E$, the *same* $E$ whose participation ratio the PR note tracks. L1 in the frequency domain shrinks everything but drives the small broadband coefficients to zero while keeping the large key modes; it is magnitude pruning of the Fourier spectrum that *also* sheds norm. (I avoid "bandstop": it prunes the weak broadband coefficients regardless of frequency rather than suppressing a contiguous band, so it is sparsification, not band-filtering.)
+The grokked solution is sparse in the Fourier basis (a few key modes = the circle[2]); memorization is broadband. So the natural intervention is **Fourier-L1**: an L1 penalty on the DFT (over the symbol axis) of the embedding $W_E$, the *same* $E$ whose participation ratio the PR note tracks. L1 in the frequency domain shrinks everything but drives the small broadband coefficients to zero while keeping the large key modes; it is magnitude pruning of the Fourier spectrum that *also* sheds norm.
 
 I ran two controls to isolate what Fourier-L1 actually buys:
 
